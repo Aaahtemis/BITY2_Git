@@ -25,7 +25,7 @@ double MeasurementCalculator::measureConvert1D(double amount = 0, Measure from =
             measurement = "Feet";
             break;
         case MILES:
-            total = amount / 1606;
+            total = amount / 1609.34;
             measurement = "Miles";
             break;
         case KILOMETRES:
@@ -289,7 +289,7 @@ double MeasurementCalculator::measureConvert2D(double x = 0, double y = 0, Measu
             measurement = "Square metres";
             break;
         case HECTARES:
-            total = measureConvert2D(x, y, MILES, SQUAREMETRES) * 10000;
+            total = measureConvert2D(x, y, MILES, SQUAREMETRES) / 10000;
             measurement = "Hectares";
             break;
         case SQUAREFEET:
@@ -297,7 +297,7 @@ double MeasurementCalculator::measureConvert2D(double x = 0, double y = 0, Measu
             measurement = "Square feet";
             break;
         case ACRES:
-            total = measureConvert2D(x, y, MILES, SQUAREFEET) * 43560;
+            total = measureConvert2D(x, y, MILES, SQUAREFEET) / 43560;
             measurement = "Acres";
             break;
         case SQUAREKILOMETRES:
@@ -491,7 +491,7 @@ double MeasurementCalculator::measureConvert2D(double x = 0, double y = 0, Measu
             switch (to)
             {
             case HECTARES:
-                total = measureConvert2D(x, 0, SQUAREFEET, SQUAREMETRES) * 10000;
+                total = measureConvert2D(x, 0, SQUAREFEET, SQUAREMETRES) / 10000;
                 measurement = "Hectares";
                 break;
             case SQUAREMETRES:
@@ -535,7 +535,7 @@ double MeasurementCalculator::measureConvert2D(double x = 0, double y = 0, Measu
             {
             case SQUAREFEET:
                 total = measureConvert2D(x, 0, HECTARES, ACRES) * 43560;
-                measurement = "Hectares";
+                measurement = "Square feet";
                 break;
             case SQUAREMETRES:
                 total = x * 10000;
@@ -579,12 +579,15 @@ double MeasurementCalculator::measureConvert2D(double x = 0, double y = 0, Measu
             case SQUAREFEET:
                 total = x * 43560;
                 measurement = "Hectares";
+                break;
             case SQUAREMETRES:
                 total = x * 4046.86;
                 measurement = "Square metres";
+                break;
             case HECTARES:
                 total = x * 0.404686;
                 measurement = "Acres";
+                break;
             case SQUAREKILOMETRES:
                 total = x / 247.105;
                 measurement = "Square kilometres";

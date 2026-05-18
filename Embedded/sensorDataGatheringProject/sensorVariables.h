@@ -1,0 +1,22 @@
+ const String channelUp = "b847ff00";
+ const String channel = "b946ff00";
+ const String channelDown = "ba45ff00";
+ const String previous = "bb44ff00";
+ const String next = "bf40ff00";
+ const String playPause = "bc43ff00";
+ const String volumeDown = "f807ff00";
+ const String volumeUp = "ea15ff00";
+ const String equalizer = "f609ff00";
+ const String incr100 = "e619ff00";
+ const String incr200 = "f20dff00";
+ const String num0 = "e916ff00";
+ const String num1 = "f30cff00";
+ const String num2 = "e718ff00";
+ const String num3 = "a15eff00";
+ const String num4 = "f708ff00";
+ const String num5 = "e31cff00";
+ const String num6 = "a55aff00";
+ const String num7 = "bd42ff00";
+ const String num8 = "ad52ff00";
+ const String num9 = "b54aff00";
+

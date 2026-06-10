@@ -12,7 +12,7 @@ void loop() {
 
   delay(1000);
   if (doOnce) {
-    //calcUnitTest_1D();
+    calcUnitTest_1D();
     //calcUnitTest_2D();
     doOnce = false;
   }

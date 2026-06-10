@@ -1,0 +1,34 @@
+1.
+Saw the ir remote in the kit and wanted to give it a go. I believed
+I could later use this project to inform my development of
+home devices like self-shutting blinds or switching on a kettle at a distance.
+
+2. 
+The software process became a little difficult when 
+I discovered that most remotes have different
+libraries for their signal codes so I had to sift through
+and find codes that I could use with that particular
+remote.
+
+I also had issues with the IR sensor library logging codes in
+a queue which delayed the input if you pressed the button
+while it was querying the last command. I ended up 
+requiring a 'do once' boolean function to check if the code
+is currently running and then allow passage if false.
+
+3.
+My hardware choices fulfil the project requirements by containing
+a sensor that transmits information that is required to be translated
+before becoming useful. I'll admit that using a simple IR sensor and remote
+feels a bit minimalistic but the computing of commands send from the remote
+required a fair bit of research and understanding of the IR remote library.
+
+4.
+I had to compromise on how much on what the program set out to do simply because of
+how long the library parsing and outputting using python took.
+My original goal was to set up functions like turning on lights based on the input.
+I believe that was a missed opportunity because you don't recieve feedback when the signal
+is recieved by the device, just through the serial output. I found that while using an IR
+signal is direct and useful for simple tasks, for a more secure and less volatile connection
+you would use a bluetooth or wifi connection instead. Lights, reflections, obstacles and distance can all
+affect the signals from the remote.

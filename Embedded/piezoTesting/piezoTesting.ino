@@ -5,11 +5,14 @@ int lightStart = 2;
 int lightEnd = 8;
 
 int movingAverage[5] = { 0, 0, 0, 0, 0 };
+int simpleAverage[100];
+int lowerDeadZone = 100;
 
-float smoothing = 1.5;
+float smoothing = 0;
 
 int tickCount = 0;
-int tickCarry = 500;
+int tickCarryMoving = 5000;
+int tickCarrySimpleMod = 5;
 
 void setup() {
   Serial.begin(9600);
@@ -18,14 +21,19 @@ void setup() {
   for (int i = lightStart; i <= lightEnd; i++) {
     pinMode(i, OUTPUT);
   }
+
+  smoothing = 2/((sizeof(movingAverage) / sizeof(movingAverage[0]))+1);
+  Serial.println("smoothingMult = " + String(smoothing));
 }
 
 void loop() {
+  tickCount++;
+
   int rawData = analogRead(input);
   //Serial.println("raw data: " + String(rawData));
-  int safeValue = constrain(rawData, 0, 1023);
+  int safeValue = constrain(rawData, lowerDeadZone, 1023);
   //Serial.println("safe data: " + String(safeValue));
-  float normalizedValue = map(safeValue, 0, 1023, 0, 100);
+  float normalizedValue = map(safeValue, lowerDeadZone, 1023, 0, 100);
   //Serial.println("normalized data: " + String(normalizedValue));
 
   float currentLightStage = map(normalizedValue, 0, 100, lightStart, lightEnd);
@@ -37,22 +45,27 @@ void loop() {
     }
   }
 
-  if (tickCount >= tickCarry) {
-    if (safeValue != 0) AddToArray(safeValue);
-    tickCount = 0;
-  } else {
-    tickCount++;
+  if (tickCount % tickCarryMoving / tickCarrySimpleMod ){
+    if (safeValue != 0) AddToStartOfArray(safeValue, simpleAverage);
   }
-  delay(100);
+
+  if (tickCount >= tickCarryMoving) { // inner loop #1
+    AddToStartOfArray(safeValue, movingAverage);
+    tickCount = 0;
+  }
 }
 
-void AddToArray(int value) {
-  for (int i = 0; i < (sizeof(movingAverage) / sizeof(movingAverage[0])) - 1; i++) {
-    movingAverage[i + 1] = movingAverage[i];
+void AddToStartOfArray(int value, int array[]) {
+  for (int i = 0; i < (sizeof(array) / sizeof(array[0])) - 1; i++) {
+    array[i + 1] = array[i];
   }
-  movingAverage[0] = value;
+  array[0] = value;
 
-  for (int i = 0; i < (sizeof(movingAverage) / sizeof(movingAverage[0])); i++) {
-    Serial.println(movingAverage[i]);
+  for (int i = 0; i < (sizeof(array) / sizeof(array[0])); i++) {
+    Serial.println(array[i]);
   }
+}
+
+void FindExponentialAverage(){
+  
 }

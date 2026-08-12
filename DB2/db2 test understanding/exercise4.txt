@@ -1,0 +1,33 @@
+
+4.1
+
+Author writes book
+Author can write many books
+A book must have one author.
+A book can have more than one author.
+Author - 1..n 
+Book - 0..n
+
+4.2
+
+Cocktail has 1 or more ingredients
+Ingredients can be in 1 or more cocktails
+Recipe would be the joining table
+Recipe can have 1 or more ingredients
+Cocktail can have 1 recipe.
+
+4.3
+
+Guests can have a booking entry that records room and guest information
+Booking entry:
+	entry date
+	leaving date
+	guests
+	room
+
+Guests can have 1 or more bookings and bookings can have 1 guest.
+Rooms can have 1 or more bookings and bookings can have 1 room.
+
+
+
+	

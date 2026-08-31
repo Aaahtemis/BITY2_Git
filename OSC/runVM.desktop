@@ -1,0 +1,23 @@
+[Desktop Entry]
+Type=Application
+
+# The version of the desktop entry specification to which this file conforms
+Version=1.0
+
+# The name of the application
+Name=VMShortcut
+
+# A comment which can/will be used as a tooltip
+Comment=Will open vm in terminal
+
+# The path to the executable
+Path=/mnt/Work/BITRepos/BITY2/BITY2_Git/OSC
+
+# The executable of the application, possibly with arguments.
+Exec=runVmShortcut.sh
+
+# Describes whether this application needs to be run in a terminal or not
+Terminal=true
+
+# The command used in executable
+# ssh -i ~\.ssh\sshkey oscstudent@20.211.92.25

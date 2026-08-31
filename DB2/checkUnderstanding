@@ -1,0 +1,19 @@
+Identify simplest unit of work that builds an app that achieves a user story
+
+Product backlog:
+
+
+As a coach -> need to have the most 'up-to-date' contact information on a player - in case they move houses
+            -> need to view players names - to call them by their correct name
+            -> need a player's emergency contact - in case something happens to them
+            -> need to view a player's condition - to know if they are okay to play
+
+Wellbeing tests
+Wellbeing and mental health resources
+Page for players can show a graph of positive improvement or cautionary messages
+Scale of 1-10 on how they are feeling in certain areas
+Forms saved and sent to coaches when particularly alarming
+Colour code severity of illness or worsening condition
+
+remove email and isInjured from person (isInjured breaks filter if removed)
+move emergency contact and medicalHistory to player
